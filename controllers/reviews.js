@@ -6,9 +6,9 @@ module.exports = {
 
 function create(req, res) {
     Game.findById(req.params.id, function(err, game) {
+        req.body.createdBy = req.user._id;
         game.reviews.push(req.body);
         game.save(function(err) {
-            console.log(req.user._id);
             res.redirect(`/games/${game._id}`);
         });
     });
