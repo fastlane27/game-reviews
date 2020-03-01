@@ -1,0 +1,11 @@
+<%- include('../partials/header') %>
+
+<h1><%= game.title %></h1>
+
+<% if (user) { %>
+    <h3>Leave a review as <%= user.name %>...</h3>
+<% } else { %>
+    <h3>No reviews.</h3>
+<% } %>
+
+<%- include('../partials/footer') %>

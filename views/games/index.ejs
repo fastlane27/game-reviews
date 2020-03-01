@@ -5,8 +5,18 @@
     <img src="<%= user.avatar %>">
     <h3>Logged In as <%= user.name %></h3>
     <a href="/logout">Log Out</a>
+    <br>
+    <a href="/users">Profile Page</a>
 <% } else { %>
     <a href="/auth/google">Log In</a>
 <% } %>
+<br>
+<ul>
+<% games.forEach(game => { %>
+    <li>
+        <a href="/games/<%= game._id %>"><%= game.title %></a>
+    </li>
+<% }); %>
+</ul>
 
 <%- include('../partials/footer') %>
