@@ -9,9 +9,7 @@ const reviewSchema = new Schema({
         max: 5,
         default: 5
     },
-    createdBy: {
-        type: Schema.Types.ObjectId,
-    }
+    createdBy: Schema.Types.ObjectId
 }, {
     timestamps: true
 });

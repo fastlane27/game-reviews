@@ -4,8 +4,17 @@
 
 <% if (user) { %>
     <h3>Leave a review as <%= user.name %>...</h3>
+    <form action="/games/<%= game._id %>/reviews" method="POST">
+        <label for="review-text">Review:</label>
+        <textarea name="content" id="review-text"></textarea>
+        <input type="submit" value="Post Review">
+    </form>
 <% } else { %>
-    <h3>No reviews.</h3>
+    <h3>Must be logged in to review.</h3>
 <% } %>
+
+<% game.reviews.forEach(function(review) { %>
+    <p><%= review.content %></p>
+<% }); %> 
 
 <%- include('../partials/footer') %>
