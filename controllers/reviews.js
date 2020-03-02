@@ -2,7 +2,8 @@ const Game = require('../models/game');
 
 module.exports = {
     create,
-    delete: deleteReview
+    delete: deleteReview,
+    update
 };
 
 function create(req, res) {
@@ -16,5 +17,14 @@ function create(req, res) {
 }
 
 function deleteReview(req, res) {
+    Game.findByIdAndUpdate(req.params.gameId,
+        { $pull: { reviews: { _id: req.params.reviewId }}},
+        function(err, game) {
+            res.redirect(`/games/${game._id}`);
+        }
+    );
+}
+
+function update(req, res) {
 
 }

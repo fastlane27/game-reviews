@@ -1,5 +1,6 @@
 <%- include('../partials/header') %>
 
+<a href="/games">Home</a>
 <h1><%= game.title %></h1>
 
 <% if (user) { %>
@@ -15,6 +16,11 @@
 
 <% game.reviews.forEach(function(review) { %>
     <p><%= review.content %></p>
+    <% if (user) { %>
+        <form action="/games/<%= game._id %>/reviews/<%= review._id %>/?_method=DELETE" method="POST">
+            <input type="submit" value="X">
+        </form>
+    <% } %>  
 <% }); %> 
 
 <%- include('../partials/footer') %>
