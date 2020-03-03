@@ -13,7 +13,10 @@ const reviewSchema = new Schema({
         max: 5,
         default: 5
     },
-    createdBy: Schema.Types.ObjectId
+    createdBy: { 
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }
 }, {
     timestamps: true
 });

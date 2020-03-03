@@ -26,11 +26,12 @@ function deleteReview(req, res) {
 }
 
 function update(req, res) {
-    Game.findOneAndUpdate(
-        { '_id': req.params.gameId, 'reviews._id': req.params.reviewId},
-        { $set: { 'reviews.$.content': req.body.content }},
-        function(err, game) {
+    Game.findById(req.params.gameId, function(err, game) {
+        const review = game.reviews.id(req.params.reviewId);
+        review.content = req.body.content;
+        review.rating = req.body.rating;
+        game.save(function(err) {
             res.redirect(`/games/${game._id}`);
-        }
-    );
+        })
+    });
 }

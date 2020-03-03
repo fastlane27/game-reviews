@@ -11,6 +11,8 @@
     <form action="/games/<%= game._id %>/reviews" method="POST">
         <label for="review-text">Review:</label>
         <textarea name="content" id="review-text"></textarea>
+        <label for="review-rating">Rating:</label>
+        <input type="number" name="rating" id="review-rating" value="5" min="1" max="5">
         <input type="submit" value="Post Review">
     </form>
 <% } else { %>
@@ -18,8 +20,10 @@
 <% } %>
 
 <% game.reviews.forEach(function(review, idx) { %>
-    <h4><%= user.name %></h4>
-    <p><%= review.content %></p>
+    <hr>
+    <h4><%=  %></h4>
+    <p>Content: <%= review.content %></p>
+    <p>Rating: <%= review.rating %></p>
     <% if (user) { %>
         <form action="/games/<%= game._id %>/reviews/<%= review._id %>/?_method=DELETE" method="POST">
             <input type="submit" value="X">
@@ -28,9 +32,11 @@
         <form action="/games/<%= game._id %>/reviews/<%= review._id %>/?_method=PUT" method="POST" class="edit-form" data-id="<%= idx %>">
             <label for="review-edit">Edit:</label>
             <textarea name="content" id="review-edit"><%= review.content %></textarea>
+            <label for="rating-edit">Rating:</label>
+            <input type="number" name="rating" id="rating-edit" value="<%= review.rating %>" min="1" max="5">
             <input type="submit" value="Update">
         </form>
-    <% } %>  
-<% }); %> 
+    <% } %>
+<% }); %>
 
 <%- include('../partials/footer') %>
