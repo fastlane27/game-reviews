@@ -12,7 +12,7 @@ function index(req, res) {
 }
 
 function show(req, res) {
-    Game.findById(req.params.id, function(err, game) {
+    Game.findById(req.params.id).populate('reviews.createdBy').exec(function(err, game) {
         res.render('games/show', { user: req.user, game });
     });
 }

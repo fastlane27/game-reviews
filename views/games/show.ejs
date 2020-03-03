@@ -21,15 +21,16 @@
 
 <% game.reviews.forEach(function(review, idx) { %>
     <hr>
-    <h4><%=  %></h4>
+    <img src="<%= review.createdBy.avatar %>">
+    <h4><%= review.createdBy.name %></h4>
     <p>Content: <%= review.content %></p>
     <p>Rating: <%= review.rating %></p>
     <% if (user) { %>
         <form action="/games/<%= game._id %>/reviews/<%= review._id %>/?_method=DELETE" method="POST">
             <input type="submit" value="X">
         </form>
-        <input type="button" value="Edit" class="edit-button" data-id="<%= idx %>">
-        <form action="/games/<%= game._id %>/reviews/<%= review._id %>/?_method=PUT" method="POST" class="edit-form" data-id="<%= idx %>">
+        <input type="button" value="Edit" class="edit-btn" data-id="<%= idx %>">
+        <form action="/games/<%= game._id %>/reviews/<%= review._id %>/?_method=PUT" method="POST" class ="edit-form" data-id="<%= idx %>">
             <label for="review-edit">Edit:</label>
             <textarea name="content" id="review-edit"><%= review.content %></textarea>
             <label for="rating-edit">Rating:</label>

@@ -1,9 +1,8 @@
-// $('.edit-form').hide();
+$('.edit-form').hide();
+$('body').click(toggleEdit);
 
-// if () {
-//     $('.edit-button').click(function() {
-//         $('.edit-form').toggle();
-//     });
-// }
-
-console.log($('.edit-form').data());
+function toggleEdit(evt) {
+    if (evt.target.className !== 'edit-btn') return;
+    let btnId = event.target.dataset.id;
+    $(`.edit-form[data-id="${btnId}"]`).toggle();
+}
