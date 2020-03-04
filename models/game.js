@@ -16,7 +16,9 @@ const reviewSchema = new Schema({
     createdBy: { 
         type: Schema.Types.ObjectId,
         ref: 'User'
-    }
+    },
+    userName: String,
+    userAvatar: String
 }, {
     timestamps: true
 });

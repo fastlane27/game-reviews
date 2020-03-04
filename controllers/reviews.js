@@ -8,7 +8,10 @@ module.exports = {
 
 function create(req, res) {
     Game.findById(req.params.id, function(err, game) {
+        if (!req.user) return res.redirect(`/games/${game._id}`);
         req.body.createdBy = req.user._id;
+        req.body.userName = req.user.name;
+        req.body.userAvatar = req.user.avatar;
         game.reviews.push(req.body);
         game.save(function(err) {
             res.redirect(`/games/${game._id}`);
@@ -17,17 +20,20 @@ function create(req, res) {
 }
 
 function deleteReview(req, res) {
-    Game.findByIdAndUpdate(req.params.gameId,
-        { $pull: { reviews: { _id: req.params.reviewId }}},
-        function(err, game) {
+    Game.findOne({ 'reviews._id': req.params.id }, function(err, game) {
+        const review = game.reviews.id(req.params.id);
+        if (!review.createdBy.equals(req.user && req.user._id)) return res.redirect(`/games/${game._id}`);
+        review.remove();
+        game.save(function(err) {
             res.redirect(`/games/${game._id}`);
-        }
-    );
+        });
+    });
 }
 
 function update(req, res) {
-    Game.findById(req.params.gameId, function(err, game) {
-        const review = game.reviews.id(req.params.reviewId);
+    Game.findOne({ 'reviews._id': req.params.id }, function(err, game) {
+        const review = game.reviews.id(req.params.id);
+        if (!review.createdBy.equals(req.user && req.user._id)) return res.redirect(`/games/${game._id}`);
         review.content = req.body.content;
         review.rating = req.body.rating;
         game.save(function(err) {
