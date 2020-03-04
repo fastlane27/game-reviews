@@ -8,7 +8,6 @@ module.exports = {
 
 function create(req, res) {
     Game.findById(req.params.id, function(err, game) {
-        if (!req.user) return res.redirect(`/games/${game._id}`);
         req.body.createdBy = req.user._id;
         req.body.userName = req.user.name;
         req.body.userAvatar = req.user.avatar;
