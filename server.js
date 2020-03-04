@@ -12,8 +12,8 @@ require('./config/passport');
 
 const indexRouter = require('./routes/index');
 const gamesRouter = require('./routes/games');
-const usersRouter = require('./routes/users');
 const reviewsRouter = require('./routes/reviews');
+const profilesRouter = require('./routes/profiles');
 
 const app = express();
 
@@ -37,8 +37,8 @@ app.use(methodOverride('_method'));
 
 app.use('/', indexRouter);
 app.use('/games', gamesRouter);
-app.use('/users', usersRouter);
 app.use('/', reviewsRouter);
+app.use('/profiles', profilesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
