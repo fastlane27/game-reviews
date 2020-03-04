@@ -13,10 +13,7 @@ const reviewSchema = new Schema({
         max: 5,
         default: 5
     },
-    createdBy: { 
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    },
+    createdBy: Schema.Types.ObjectId,
     userName: String,
     userAvatar: String
 }, {
@@ -31,10 +28,7 @@ const gameSchema = new Schema({
     genre: String,
     platform: String,
     reviews: [reviewSchema],
-    favoritedBy: [{
-        type: Schema.Types.ObjectId, 
-        ref: 'User'
-    }]
+    favoritedBy: [Schema.Types.ObjectId]
 }, {
     timestamp: true
 });
