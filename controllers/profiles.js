@@ -2,13 +2,20 @@ const Profile = require('../models/profile');
 
 module.exports = {
     index,
+    show,
     addFav,
     removeFav
 };
 
 function index(req, res) {
+    Profile.find({}, function(err, profiles) {
+        res.render('profiles/index', { profiles });
+    });
+}
+
+function show(req, res) {
     Profile.findById(req.params.id).populate('favorites').exec(function(err, profile) {
-        res.render('profiles/index', { profile });
+        res.render('profiles/show', { profile });
     });
 }
 

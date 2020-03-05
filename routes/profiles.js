@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const profilesCtrl = require('../controllers/profiles');
 
-router.get('/profiles/:id', profilesCtrl.index);
+router.get('/profiles', profilesCtrl.index);
+router.get('/profiles/:id', profilesCtrl.show);
 router.post('/games/:id/favorite', isLoggedIn, profilesCtrl.addFav);
 router.delete('/games/:id/favorite', isLoggedIn, profilesCtrl.removeFav);
 
