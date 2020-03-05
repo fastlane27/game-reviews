@@ -7,7 +7,7 @@ module.exports = {
 };
 
 function index(req, res) {
-    Profile.findById(req.params.id, function(err, profile) {
+    Profile.findById(req.params.id).populate('favorites').exec(function(err, profile) {
         res.render('profiles/index', { profile });
     });
 }

@@ -5,7 +5,10 @@ const profileSchema = new Schema({
     userName: String,
     userAvatar: String,
     about: String,
-    favorites: [Schema.Types.ObjectId]
+    favorites: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Game'
+    }]
 }, {
     timestamps: true
 });
