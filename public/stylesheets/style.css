@@ -1,8 +1,54 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
-a {
-  color: #00B7FF;
+main {
+    flex: 1 0 auto;
 }
+
+nav img {
+    width: 3rem;
+    vertical-align: middle;
+}
+
+.material-icons { 
+    font-size: 3rem !important; 
+}
+
+.page-footer {
+    padding: 0.5rem 0;
+}
+
+@media only screen and (min-width: 993px) {
+    .container {
+        width: 80%;
+        max-width: 1600px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    nav .brand-logo {
+        left: unset;
+        transform: unset;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    nav .brand-logo {
+        left: 25%;
+        transform: translateX(25%);
+    }
+}
+
+/* .card {
+    width: 500px;
+    height: 250px;
+}
+
+.card.horizontal .card-image img {
+    max-width: unset;
+    width: auto;
+    height: 100%;
+} */

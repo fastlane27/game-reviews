@@ -1,4 +1,5 @@
 const Game = require('../models/game');
+const Profile = require('../models/profile');
 
 module.exports = {
     index,
@@ -13,6 +14,12 @@ function index(req, res) {
 
 function show(req, res) {
     Game.findById(req.params.id, function(err, game) {
-        res.render('games/show', { game });
+        if (req.user) {
+            Profile.findById(req.user.profileId, function(err, profile) {
+                res.render('games/show', { game, profile });
+            });
+        } else {
+            res.render('games/show', { game });
+        }
     });
 }

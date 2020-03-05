@@ -1,21 +1,26 @@
 <%- include('../partials/header') %>
 
-<a href="/games">Home</a>
-<h1><%= game.title %></h1>
+
+<div>
+    <h2><%= game.title %></h2>
+    <img src="<%= game.art %>">
+</div>
+
+
 <h2>Reviews</h2>
 
 <% if (user) { %>
-    <h3>Leave a review as <%= user.name %>...</h3>
+    <h3>Write a review...</h3>
 
-
+    <% if (!profile.favorites.includes(game._id)) { %>
         <form action="/games/<%= game._id %>/favorite" method="POST">
             <input type="submit" value="Favorite">
         </form>
-
+    <% } else { %>
         <form action="/games/<%= game._id %>/favorite?_method=DELETE" method="POST">
             <input type="submit" value="Unfavorite">
         </form>
-
+    <% } %>
      
     <form action="/games/<%= game._id %>/reviews" method="POST">
         <label for="review-text">Review:</label>

@@ -3,12 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
-    <script
+    <script defer
     src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script defer src="/javascripts/script.js"></script>
     <title>Game Reviews</title>
 </head>
 <body>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="container">
+                    <a href="/games" class="brand-logo">Game Reviews</a>
+                    <ul class="right hide-on-small-only">
+                        <li><a href="/games">Games</a></li>
+                        <li><a href="/profiles">Users</a></li>
+                        <% if (user) { %>
+                        <li><a href="/profiles/<%= user.profileId %>">Profile</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                        <li><img class="circle" src="<%= user.avatar %>"></li>
+                        <% } else { %>
+                        <li><a href="/auth/google">Login</a></li>
+                        <li><i class="material-icons">account_circle</i></li>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <main class="container">
