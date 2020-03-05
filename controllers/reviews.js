@@ -11,6 +11,7 @@ function create(req, res) {
         req.body.createdBy = req.user._id;
         req.body.userName = req.user.name;
         req.body.userAvatar = req.user.avatar;
+        req.body.userProfile = req.user.profileId;
         game.reviews.push(req.body);
         game.save(function(err) {
             res.redirect(`/games/${game._id}`);

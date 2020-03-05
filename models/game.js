@@ -15,7 +15,8 @@ const reviewSchema = new Schema({
     },
     createdBy: Schema.Types.ObjectId,
     userName: String,
-    userAvatar: String
+    userAvatar: String,
+    userProfile: Schema.Types.ObjectId
 }, {
     timestamps: true
 });
@@ -27,6 +28,7 @@ const gameSchema = new Schema({
     releaseDate: Date,
     genre: String,
     platform: String,
+    art: String,
     reviews: [reviewSchema],
 }, {
     timestamp: true

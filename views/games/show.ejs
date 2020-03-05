@@ -31,7 +31,7 @@
 <% game.reviews.forEach(function(review, idx) { %>
     <hr>
     <img src="<%= review.userAvatar %>">
-    <h4><%= review.userName %></h4>
+    <a href="/profiles/<%= review.userProfile %>"><h4><%= review.userName %></h4></a>
     <p>Content: <%= review.content %></p>
     <p>Rating: <%= review.rating %></p>
 

@@ -5,6 +5,7 @@
 
 <% profile.favorites.forEach(function(favorite) { %>
     <h2><%= favorite.title %></h2>
+    <img src="<%= favorite.art %>">
 <% }); %>
 
 <%- include('../partials/footer') %>
