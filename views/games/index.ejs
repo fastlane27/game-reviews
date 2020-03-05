@@ -6,7 +6,7 @@
     <h3>Logged In as <%= user.name %></h3>
     <a href="/logout">Log Out</a>
     <br>
-    <a href="/profiles">Profile Page</a>
+    <a href="/profiles/<%= user.profileId %>">Profile Page</a>
 <% } else { %>
     <a href="/auth/google">Log In</a>
 <% } %>

@@ -38,7 +38,7 @@ app.use(methodOverride('_method'));
 app.use('/', indexRouter);
 app.use('/games', gamesRouter);
 app.use('/', reviewsRouter);
-app.use('/profiles', profilesRouter);
+app.use('/', profilesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

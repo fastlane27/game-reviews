@@ -28,7 +28,6 @@ const gameSchema = new Schema({
     genre: String,
     platform: String,
     reviews: [reviewSchema],
-    favoritedBy: [Schema.Types.ObjectId]
 }, {
     timestamp: true
 });

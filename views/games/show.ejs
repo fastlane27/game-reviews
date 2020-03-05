@@ -1,7 +1,5 @@
 <%- include('../partials/header') %>
 
-<script defer src="/javascripts/script.js"></script>
-
 <a href="/games">Home</a>
 <h1><%= game.title %></h1>
 <h2>Reviews</h2>
@@ -9,15 +7,15 @@
 <% if (user) { %>
     <h3>Leave a review as <%= user.name %>...</h3>
 
-    <% if (!game.favoritedBy.includes(user._id)) { %>
-        <form action="/games/<%= game._id %>" method="POST">
+
+        <form action="/games/<%= game._id %>/favorite" method="POST">
             <input type="submit" value="Favorite">
         </form>
-    <% } else { %>
-        <form action="/games/<%= game._id %>?_method=DELETE" method="POST">
+
+        <form action="/games/<%= game._id %>/favorite?_method=DELETE" method="POST">
             <input type="submit" value="Unfavorite">
         </form>
-    <% } %>    
+
      
     <form action="/games/<%= game._id %>/reviews" method="POST">
         <label for="review-text">Review:</label>
@@ -43,7 +41,7 @@
         </form>
 
         <input type="button" value="Edit" class="edit-btn" data-id="<%= idx %>">
-        <form action="/reviews/<%= review._id %>?_method=PUT" method="POST" class ="edit-form" data-id="<%= idx %>">
+        <form action="/reviews/<%= review._id %>?_method=PUT" method="POST" class="edit-form" data-id="<%= idx %>">
             <label for="review-edit">Edit:</label>
             <textarea name="content" id="review-edit"><%= review.content %></textarea>
             <label for="rating-edit">Rating:</label>
