@@ -7,35 +7,26 @@ module.exports = {
 };
 
 function index(req, res) {
-    // Profile.findById(req.)
-    res.render('profiles/index');
+    Profile.findById(req.params.id, function(err, profile) {
+        res.render('profiles/index', { profile });
+    });
 }
 
 function addFav(req, res) {
-    Profile.findOne({ 'userId': req.user._id }, function(err, profile) {
-        console.log(profile._id);
+    Profile.findById(req.user.profileId, function(err, profile) {
+        if (profile.favorites.includes(req.params.id)) return res.redirect(`/games/${req.params.id}`);
+        profile.favorites.push(req.params.id);
+        profile.save(function(err) {
+            res.redirect(`/games/${req.params.id}`);
+        });
     });
 }
 
 function removeFav(req, res) {
-
+    Profile.findById(req.user.profileId, function(err, profile) {
+        profile.favorites.pull(req.params.id);
+        profile.save(function(err) {
+            res.redirect(`/games/${req.params.id}`);
+        });
+    });
 }
-
-// function addFav(req, res) {
-//     Game.findById(req.params.id, function(err, game) {
-//         if (game.favoritedBy.includes(req.user._id)) return res.redirect(`/games/${game._id}`);
-//         game.favoritedBy.push(req.user._id);
-//         game.save(function(err) {
-//             res.redirect(`/games/${game._id}`);
-//         });
-//     });
-// }
-
-// function removeFav(req, res) {
-//     Game.findById(req.params.id, function(err, game) {
-//         game.favoritedBy.pull(req.user._id);
-//         game.save(function(err) {
-//             res.redirect(`/games/${game._id}`);
-//         });
-//     });
-// }
