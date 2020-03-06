@@ -1,8 +1,21 @@
 <%- include('../partials/header') %>
+<link rel="stylesheet" href="/stylesheets/profiles.css">
 
-<% profiles.forEach(function(profile) { %>
-    <h1><%= profile.userName %></h1>
-    <img src="<%= profile.userAvatar %>">
-<% }); %>
+<div class="my-container">
+    <h2 class="white-text">User Profiles</h2>
+    <div class="user-container">
+        <% profiles.forEach(function(profile) { %>
+            <a href="/profiles/<%= profile._id %>" class="collection-item">
+                <div class="profiles grey darken-3">
+                    <div class="profile">
+                        <img class="circle" src="<%= profile.userAvatar %>">
+                        <h5 class="white-text"><%= profile.userName %></h5>
+                    </div>
+                    <i class="material-icons white-text">keyboard_arrow_right</i>
+                </div>
+            </a>
+        <% }); %>
+    </div>
+</div>
 
 <%- include('../partials/footer') %>

@@ -8,10 +8,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 3fr 2fr 1fr;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
     height: 500px;
-    width: 800px;
     color: white;
 }
 
@@ -22,6 +19,7 @@
 .game2 { 
     grid-area: 1 / 2 / 2 / 3;
     margin-left: 20px;
+    min-width: 300px;
 }
 
 .game3 { 
@@ -110,7 +108,7 @@
 
 .review-post2 h6 {
     font-weight: bold;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .review-post3 { 
@@ -132,6 +130,6 @@
 
 .delete-btn {
     position: absolute;
-    top: 37%;
+    bottom: 0;
     right: 0;
 }

@@ -8,9 +8,19 @@ main {
     flex: 1 0 auto;
 }
 
+.brand-logo {
+    font-family: 'Righteous', cursive;
+    text-shadow: -3px 3px #00bfa5;
+}
+
+nav li {
+    font-weight: bold;
+}
+
 nav img {
     width: 3rem;
-    vertical-align: middle;
+    display: block;
+    margin-top: 10px;
 }
 
 .material-icons { 
@@ -18,7 +28,9 @@ nav img {
 }
 
 .page-footer {
-    padding: 0.5rem 0;
+    padding: 4px 0;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 @media only screen and (min-width: 993px) {
@@ -41,14 +53,3 @@ nav img {
         transform: translateX(25%);
     }
 }
-
-/* .card {
-    width: 500px;
-    height: 250px;
-}
-
-.card.horizontal .card-image img {
-    max-width: unset;
-    width: auto;
-    height: 100%;
-} */

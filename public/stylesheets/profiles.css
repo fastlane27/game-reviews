@@ -1,0 +1,41 @@
+.my-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.my-container h2 {
+    text-shadow: 1px 1px 4px #424242;
+}
+
+.user-container {
+    width: 100%;
+    max-width: 800px;
+}
+
+.profiles {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2px;
+    padding: 10px 20px;
+}
+
+.profiles:hover {
+    background-color: #212121 !important;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+}
+
+.profile img {
+    width: 60px;
+    margin-right: 20px;
+}
+
+.profile h5 {
+    margin: 0;
+}

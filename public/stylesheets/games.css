@@ -1,0 +1,21 @@
+.card-content {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+.card-title {
+    font-weight: bold !important;
+}
+
+.card-action {
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+}
+
+.card-action a {
+    font-size: 18px;
+}
+
+.card-action a:hover {
+    color: #1de9b6 !important;
+}

@@ -1,15 +1,22 @@
 <%- include('../partials/header') %>
 <link rel="stylesheet" href="/stylesheets/profile.css">
 
-<div class="my-container grey darken-3 z-depth-1">
-        <img class="circle" src="<%= profile.userAvatar %>">
-        <h1><%= profile.userName %>'s Page</h1>
+<div class="pro-container">
+        <img class="circle z-depth-3" src="<%= profile.userAvatar %>">
+        <h1 class="teal-text text-accent-4"><%= profile.userName %></h1>
 </div>
 
-<% profile.favorites.forEach(function(favorite) { %>
-    <h2><%= favorite.title %></h2>
-    <img src="<%= favorite.art %>">
-<% }); %>
+<div class="favs-container grey darken-3 z-depth-1">
+    <h2 class="white-text">Favorites</h2>
+    <% if (profile.favorites.length > 0) { %>
+        <div class="favorites">
+            <% profile.favorites.forEach(function(favorite) { %>
+                <a href="/games/<%= favorite._id %>"><img src="<%= favorite.art %>"></a>
+            <% }); %>
+        </div>
+    <% } else { %>
+        <p class="white-text">No games favorited.</p>
+    <% } %>
+</div>
         
 <%- include('../partials/footer') %>
-        
