@@ -1,11 +1,15 @@
 <%- include('../partials/header') %>
+<link rel="stylesheet" href="/stylesheets/profile.css">
 
-<h1><%= profile.userName %>'s Page</h1>
-<img src="<%= profile.userAvatar %>">
+<div class="my-container grey darken-3 z-depth-1">
+        <img class="circle" src="<%= profile.userAvatar %>">
+        <h1><%= profile.userName %>'s Page</h1>
+</div>
 
 <% profile.favorites.forEach(function(favorite) { %>
     <h2><%= favorite.title %></h2>
     <img src="<%= favorite.art %>">
 <% }); %>
-
+        
 <%- include('../partials/footer') %>
+        

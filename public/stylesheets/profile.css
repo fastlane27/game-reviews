@@ -1,0 +1,19 @@
+.my-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto 0 auto;
+    padding: 20px;
+    max-width: 800px;
+}
+
+.my-container img {
+    width: 150px;
+    margin-right: 15px;
+}
+
+.my-container h1 {
+    font-size: 40px; 
+    color: white;
+    margin: 0 0 0 15px;
+}

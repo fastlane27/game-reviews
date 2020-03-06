@@ -1,59 +1,82 @@
 <%- include('../partials/header') %>
+<link rel="stylesheet" href="/stylesheets/game.css">
 
+<div class="my-container">
+    <div class="game z-depth-1 grey darken-3">
+        <div class="game1"><img src="<%= game.art %>"></div>
+        <div class="game2"><h2><%= game.title %></h2></div>
+        <div class="game3 grey darken-2">
+            <h5><span>Developer:</span> <%= game.developer %></h5>
+            <h5><span>Publisher:</span> <%= game.publisher %></h5>
+            <h5><span>Release Date:</span> <%= game.releaseDate.toLocaleDateString() %></h5>
+            <h5><span>Genre:</span> <%= game.genre %></h5>
+        </div>
+        <div class="game4">
+            <% if (user) { %> 
+                <% if (!profile.favorites.includes(game._id)) { %>
+                    <form action="/games/<%= game._id %>/favorite" method="POST">
+                        <button type="submit" class="waves-effect waves-light btn-flat teal accent-4 white-text">Favorite</button>
+                    </form>
+                <% } else { %>
+                    <form action="/games/<%= game._id %>/favorite?_method=DELETE" method="POST">
+                        <button type="submit" class="waves-effect waves-light btn-flat red lighten-1 white-text">Unfavorite</button>
+                    </form>
+                <% } %>
+            <% } %> 
+        </div>
+    </div>
+</div>    
 
-<div>
-    <h2><%= game.title %></h2>
-    <img src="<%= game.art %>">
-</div>
+<br>
 
-
-<h2>Reviews</h2>
+<% if (user || game.reviews.length > 0) { %>
+    <h4 class="white-text">Reviews</h4>
+<% } %>
 
 <% if (user) { %>
-    <h3>Write a review...</h3>
-
-    <% if (!profile.favorites.includes(game._id)) { %>
-        <form action="/games/<%= game._id %>/favorite" method="POST">
-            <input type="submit" value="Favorite">
+    <div class="review grey darken-3">
+        <h5 class="white-text">Write a review...</h5>
+        <form action="/games/<%= game._id %>/reviews" method="POST">
+            <textarea name="content" id="review-text" class="text-area grey darken-2"></textarea>
+            <br>
+            <label for="review-rating" class="rating-label">Rating:</label>
+            <input type="number" name="rating" id="review-rating" value="5" min="1" max="5" class="rating-field">
+            <br>
+            <button type="submit" class="waves-effect waves-light btn-flat teal accent-4 white-text post-btn">Post Review</button>
         </form>
-    <% } else { %>
-        <form action="/games/<%= game._id %>/favorite?_method=DELETE" method="POST">
-            <input type="submit" value="Unfavorite">
-        </form>
-    <% } %>
-     
-    <form action="/games/<%= game._id %>/reviews" method="POST">
-        <label for="review-text">Review:</label>
-        <textarea name="content" id="review-text"></textarea>
-        <label for="review-rating">Rating:</label>
-        <input type="number" name="rating" id="review-rating" value="5" min="1" max="5">
-        <input type="submit" value="Post Review">
-    </form>
-<% } else { %>
-    <h3>Must be logged in to review.</h3>
+    </div>
+    <br>
 <% } %>
 
 <% game.reviews.forEach(function(review, idx) { %>
-    <hr>
-    <img src="<%= review.userAvatar %>">
-    <a href="/profiles/<%= review.userProfile %>"><h4><%= review.userName %></h4></a>
-    <p>Content: <%= review.content %></p>
-    <p>Rating: <%= review.rating %></p>
-
-    <% if (review.createdBy.equals(user && user._id)) { %>
-        <form action="/reviews/<%= review._id %>?_method=DELETE" method="POST">
-            <input type="submit" value="X">
-        </form>
-
-        <input type="button" value="Edit" class="edit-btn" data-id="<%= idx %>">
-        <form action="/reviews/<%= review._id %>?_method=PUT" method="POST" class="edit-form" data-id="<%= idx %>">
-            <label for="review-edit">Edit:</label>
-            <textarea name="content" id="review-edit"><%= review.content %></textarea>
-            <label for="rating-edit">Rating:</label>
-            <input type="number" name="rating" id="rating-edit" value="<%= review.rating %>" min="1" max="5">
-            <input type="submit" value="Update">
-        </form>
-    <% } %>
+    <div class="review-post grey darken-3">
+        <div class="review-post1">
+            <img class="circle" src="<%= review.userAvatar %>">
+        </div>
+        <div class="review-post2">
+            <a class="teal-text text-accent-4" href="/profiles/<%= review.userProfile %>"><%= review.userName %></a>
+            <p><%= review.content %></p>
+            <h6>Rating: <%= review.rating %></h6>
+            <form action="/reviews/<%= review._id %>?_method=PUT" method="POST" class="edit-form" data-id="<%= idx %>">
+                <label for="review-edit" class="edit-label">Edit:</label>
+                <textarea name="content" id="review-edit" class="text-area grey darken-2"><%= review.content %></textarea>
+                <br>
+                <label for="rating-edit" class="rating-label">Rating:</label>
+                <input class="rating-field" type="number" name="rating" id="rating-edit" value="<%= review.rating %>" min="1" max="5">
+                <br>
+                <button type="submit" class="waves-effect waves-light btn-flat teal accent-4 white-text update-btn">Update</button>
+            </form>
+        </div>
+        <% if (review.createdBy.equals(user && user._id)) { %>
+            <div class="review-post3">
+                <button class="waves-effect waves-light btn-flat teal accent-4 white-text" id="edit-btn" data-id="<%= idx %>">Edit</button>
+                
+                <form action="/reviews/<%= review._id %>?_method=DELETE" method="POST" class="edit-form" data-id="<%= idx %>">
+                    <button type="submit" class="waves-effect waves-light btn-flat red lighten-1 white-text delete-btn">Delete</button>
+                </form>
+            </div>
+        <% } %>
+    </div>
 <% }); %>
 
 <%- include('../partials/footer') %>

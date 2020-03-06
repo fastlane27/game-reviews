@@ -1,0 +1,137 @@
+.my-container {
+    display: flex;
+    justify-content: center;
+}
+
+.game {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 3fr 2fr 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    height: 500px;
+    width: 800px;
+    color: white;
+}
+
+.game1 { 
+    grid-area: 1 / 1 / 4 / 2;
+}
+
+.game2 { 
+    grid-area: 1 / 2 / 2 / 3;
+    margin-left: 20px;
+}
+
+.game3 { 
+    grid-area: 2 / 2 / 3 / 3;
+    margin: 0 20px;
+    padding: 0 20px 10px 20px;
+    background-color: rgb(202, 201, 201);
+}
+
+.game4 { 
+    grid-area: 3 / 2 / 4 / 3;
+    position: relative;
+}
+
+.game4 form {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+.game3 h5 {
+    font-size: 20px;
+}
+
+.game3 span {
+    font-weight: bold;
+}
+
+.review {
+    padding: 30px;
+}
+
+.text-area {
+    border: 2px solid white;
+    width: 90%;
+    color: white;
+    min-height: 100px;
+    padding: 10px;
+    font-size: 16px;
+    resize: vertical;
+}
+
+.rating-label {
+    font-size: 18px;
+    color: white;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.rating-field {
+    margin-left: 10px !important;
+    width: 50px !important;
+    color: white;
+    text-align: center;
+}
+
+.post-btn, .update-btn {
+    margin-top: 10px;
+}
+
+.review-post {
+    margin: 10px 0;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 100px 5fr 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.review-post img {
+    width: 100px;
+}
+
+.review-post2 { 
+    padding: 0 20px 10px 20px;
+    color: white;
+}
+
+.review-post2 a {
+    font-size: 24px;
+}
+
+.review-post2 p {
+    font-size: 18px;
+}
+
+.review-post2 h6 {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.review-post3 { 
+    position: relative;
+}
+
+#edit-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.edit-label {
+    display: block;
+    margin-top: 20px;
+    font-size: 18px;
+    color: white;
+}
+
+.delete-btn {
+    position: absolute;
+    top: 37%;
+    right: 0;
+}
