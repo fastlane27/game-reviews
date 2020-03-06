@@ -18,9 +18,10 @@ The Game Reviews web app contains a database of games that users can view the de
 - Materialize
 
 ## Getting Started
-**[Click here](http://gamesreviews.herokuapp.com/games) to try out the app!**
-
-## Next Steps
+**[Click here](http://gamesreviews.herokuapp.com/games) to try out the app!**  
+ The planning for this project can be viewed [here](https://trello.com/b/0QyKhhzH/game-reviews).
+ 
+ ## Next Steps
 - Add search functionality for both games and users
 - Add multiple pages for larger numbers of reviews
 - Add the ability to see own reviews on profile page
