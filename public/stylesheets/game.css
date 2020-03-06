@@ -9,6 +9,7 @@
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 3fr 2fr 1fr;
     height: 500px;
+    width: 800px;
     color: white;
 }
 
